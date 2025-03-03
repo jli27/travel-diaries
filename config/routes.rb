@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
 
-  # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
+  # "/" leads to homescreen with feed of popular activities
+    # activities either from followed or public profiles
+  # controllers: users, actions: index
+  get "/" => "pages#first"
 
-  # get "/your_first_screen" => "pages#first"
+  # pages:
+
+  # user profile
+    # edit profile, list of posted itineraries (in bulletin board format)
+
+  # explore
+    # has map with pins of public people's itineraries
+    # also highlighted activities??
+  
+  # itinerary
+    # table/bulletin ordered by time and activity
+
   
 end
