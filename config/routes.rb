@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # "/" leads to homescreen with feed of popular activities
     # activities either from followed or public profiles
   # controllers: users, actions: index
-  get "/" => "pages#first"
 
   # pages:
 

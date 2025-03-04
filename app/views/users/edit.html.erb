@@ -1,0 +1,8 @@
+<dd>
+    <form action="/update_user/<%= @user.id %>" method="post">
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="input_username" value=<%= @user.username %>>
+
+      <button>Update user</button>
+    </form>
+  </dd>
