@@ -11,7 +11,6 @@ task({ :sample_data => :environment }) do
   
   user = User.new
   user.username = "Jasmine"
-  user.private = true
   user.itineraries_count = 0
   user.likes_count = 0
   user.email = "jasmine@example.com"
@@ -20,7 +19,6 @@ task({ :sample_data => :environment }) do
 
   user2 = User.new
   user2.username = "Madelyn"
-  user2.private = false
   user2.itineraries_count = 0
   user2.likes_count = 0
   user.email = "madelyn@example.com"
@@ -30,13 +28,17 @@ task({ :sample_data => :environment }) do
   users = User.all
   p "Added #{User.count} Users"
 
+  =begin
+
   itinerary = Itinerary.new
   itinerary.name = "Lisbon"
   itinerary.caption = "My Lisbon itinerary"
   itinerary.cover_image = "https://i0.wp.com/jordangassner.com/wp-content/uploads/2023/06/Portugal-Lisbon-Fronteira-Gardens-3.jpg?resize=1080%2C1620&ssl=1"
   itinerary.likes_count = 0
+  itinerary.bookmarks_count = 0
   itinerary.activities_count = 0
   itinerary.owner_id = users.at(0)
+  users.at(0).itineraries_count += 1
   itinerary.save
 
   itinerary2 = Itinerary.new
@@ -46,6 +48,7 @@ task({ :sample_data => :environment }) do
   itinerary2.likes_count = 0
   itinerary2.activities_count = 0
   itinerary2.owner_id = users.at(1)
+  users.at(1).itineraries_count += 1
   itinerary2.save
 
   p "Added #{Itinerary.count} Itineraries"
@@ -64,6 +67,7 @@ task({ :sample_data => :environment }) do
   activity.date = new_date
   new_time = Time.parse("14:00")
   activity.time = new_time
+  itineraries.at(0).activities_count += 1
   acitivity.save
 
   activity2 = Activity.new
@@ -79,9 +83,12 @@ task({ :sample_data => :environment }) do
   activity2.date = new_date
   new_time2 = Time.parse("12:00")
   activity2.time = new_time
+  itineraries.at(1).activities_count += 1
   activity2.save
 
   p "Added #{Activity.count} Activities"
-  activities = Activity.all
+  all_activities = Activity.all
+
+  
 
 end
