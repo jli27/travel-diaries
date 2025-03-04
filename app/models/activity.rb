@@ -14,6 +14,7 @@
 
 class Activity < ApplicationRecord
   validates(:poster, { :presence => true })
+  validates(:plan, { :presence => true })
 
   # Association accessor methods to define:
   
@@ -22,8 +23,8 @@ class Activity < ApplicationRecord
   # Activity#traveller: returns a row from the users table associated to this activity by the owner_id column
   belongs_to(:traveller, class_name: "User", foreign_key: "owner_id")
 
-  # Activity#activities: returns rows from the activity table associated to this activity by the activity_id column
-  has_many(:activities, class_name: "Activity", foreign_key: "activity_id")
+  # Activity#corresponding_itinerary: returns a row from the itinerary table associated to this activity by the itinerary_id column
+  belongs_to(:corresponding_itinerary, class_name: "Itinerary", foreign_key: "itinerary_id")
 
   # Activity#bookmarks: returns rows from the bookmarks table associated to this activity by the activity_id column
   has_many(:bookmarks, class_name: "Like", foreign_key: "activity_id")

@@ -33,4 +33,7 @@ class Itinerary < ApplicationRecord
 
   # Itinerary#fans: returns rows from the users table associated to this Itinerary through its likes
   has_many(:fans, through: :likes, source: :fan)
+
+  # Itinerary#plans: returns rows from the activities table associated to this Itinerary through its activities
+  has_many(:plans, through: :activities, source: :activities)
 end
